@@ -8,9 +8,9 @@ import java.util.Observable;
 
 public class GameGrid extends Observable{
 
-	public static final int EMPTY;
-	public static final int ME;
-	public static final int OTHER;
+	public static final int EMPTY = 0;
+	public static final int ME = 1;
+	public static final int OTHER = 	2;
 	
 	/**
 	 * Constructor

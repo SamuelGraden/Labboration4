@@ -27,9 +27,8 @@ public class GomokuGUI implements Observer{
 		client.addObserver(this);
 		gamestate.addObserver(this);
 		
-		
 	}
-	
+
 	
 	public void update(Observable arg0, Object arg1) {
 		
