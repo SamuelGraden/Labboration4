@@ -15,6 +15,7 @@ public class GomokuGUI implements Observer{
 	private GomokuClient client;
 	private GomokuGameState gamestate;
 	
+	
 	/**
 	 * The constructor
 	 * 
@@ -51,5 +52,12 @@ public class GomokuGUI implements Observer{
 		}
 		
 	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	
 	
 }
