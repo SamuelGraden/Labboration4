@@ -3,7 +3,9 @@ import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import lab4.client.GomokuClient;
 import lab4.data.GameGrid;
@@ -18,6 +20,11 @@ public class GomokuGUI implements Observer{
 	private GomokuClient client;
 	private GomokuGameState gamestate;
 	
+	JButton connectButton = new JButton("Connect");
+	JButton newGameButton = new JButton("New Game");
+	JButton disconnectButton = new JButton("Disconnect");
+	
+	JLabel messageLabel = new JLabel("");
 	
 	/**
 	 * The constructor
@@ -35,22 +42,33 @@ public class GomokuGUI implements Observer{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setFocusable(true);
 		frame.setVisible(true);
-		frame.add(new GamePanel(g.getGameGrid()));
+		
 		Dimension d = new Dimension(600,600);
 		frame.setPreferredSize(d);
 		frame.setLocation(0,0);
 		frame.setSize(d); 	
 		
 		
+		disconnectButton.setBounds(225, 330, 100, 30);
+		connectButton.setBounds(115, 330, 100, 30);
+		newGameButton.setBounds(5, 330, 100, 30);	
+		
+		frame.add(disconnectButton);
+		frame.add(connectButton);
+		frame.add(newGameButton);
+		frame.add(new GamePanel(g.getGameGrid()));
 		
 		
 	}
 	
 	
+	
+	
 	public void update(Observable arg0, Object arg1) {
 		
+		
 		// Update the buttons if the connection status has changed
-		/*if(arg0 == client){
+		if(arg0 == client){
 			if(client.getConnectionStatus() == GomokuClient.UNCONNECTED){
 				connectButton.setEnabled(true);
 				newGameButton.setEnabled(false);
@@ -65,7 +83,7 @@ public class GomokuGUI implements Observer{
 		// Update the status text if the gamestate has changed
 		if(arg0 == gamestate){
 			messageLabel.setText(gamestate.getMessageString());
-		}*/
+		}
 		
 	}
 	

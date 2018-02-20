@@ -18,8 +18,8 @@ import lab4.data.GameGrid;
  */
 
 public class GamePanel extends JPanel implements Observer{
-	
-	
+
+
 
 	private final int UNIT_SIZE = 20;
 	private GameGrid grid;
@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Observer{
 		this.setMinimumSize(d);
 		this.setPreferredSize(d);
 		this.setBackground(Color.WHITE);
-		
+
 		addMouseListener(new mouseClicked());
 	}
 
@@ -63,46 +63,48 @@ public class GamePanel extends JPanel implements Observer{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 
-				g.drawRect( 20, 20, 20, 20 );
-				
-				for(int x = 0;x<grid.getSize();x++) {
-					for(int y = 0; y<grid.getSize();y++) {
-						//System.out.println("y");
-						if(grid.grid[x][y]==2) {
-							g.fillRect(x*UNIT_SIZE, y*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
-						}else if(grid.grid[x][y]==1) {
-							g.setColor(Color.RED);
-							g.fillRect(x*UNIT_SIZE, y*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
-							g.setColor(Color.BLACK);
-						}
-						else {
-							g.drawRect(x*UNIT_SIZE, y*UNIT_SIZE, UNIT_SIZE,UNIT_SIZE);
-						}
-						
-					}
+		g.drawRect( 20, 20, 20, 20 );
+
+		for(int x = 0;x<grid.getSize();x++) {
+			for(int y = 0; y<grid.getSize();y++) {
+				//System.out.println("y");
+				if(grid.grid[x][y]==2) {
+					g.fillRect(x*UNIT_SIZE, y*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
+				}else if(grid.grid[x][y]==1) {
+					g.setColor(Color.RED);
+					g.fillRect(x*UNIT_SIZE, y*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
+					g.setColor(Color.BLACK);
 				}
-		
+				else {
+					g.drawRect(x*UNIT_SIZE, y*UNIT_SIZE, UNIT_SIZE,UNIT_SIZE);
+				}
+
+			}
+		}
+
 
 	}	
-	
-public class mouseClicked extends MouseAdapter {
-	
-	public void mouseClicked(MouseEvent e) {
-		int x = e.getX();
-		int y= e.getY();
-		System.out.println("X: " + x+" Y: " + y);
-		//int [] grid = getGridPosition(x,y);
-		
-		grid.move(x/UNIT_SIZE,y/UNIT_SIZE,1);
-		
-		
+
+	public class mouseClicked extends MouseAdapter {
+
+		public void mouseClicked(MouseEvent e) {
+			int x = e.getX();
+			int y= e.getY();
+			System.out.println("X: " + x+" Y: " + y);
+			//int [] grid = getGridPosition(x,y);
+			try {
+				grid.move(x/UNIT_SIZE,y/UNIT_SIZE,1);
+			}catch(Exception r) {
+				
+			}
+
+		}
+
 	}
-	
-}
-	
-	
+
+
 	public static void main(String[] args) {
-		
+
 	}
 
 }
